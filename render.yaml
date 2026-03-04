@@ -1,7 +1,7 @@
 services:
   - type: web
     name: springboot-server
-    env: java
+    env: maven
     plan: free
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/*.jar
