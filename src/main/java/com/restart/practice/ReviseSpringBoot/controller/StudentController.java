@@ -15,9 +15,14 @@ public class StudentController {
 
     private final StudentService studentService;
     public StudentController(StudentService studentService){
+
         this.studentService = studentService;
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "Spring Boot API is running on Render 🚀";
+    }
     @GetMapping("/student")
     public StudentDto getStudentDto(){
         return new StudentDto(4L,"Admin","admin@gmail.com");
