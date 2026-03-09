@@ -65,7 +65,7 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentDto> getAllStudents() {
         List<Student> students = studentRepository.findAll();
         List<StudentDto> studentDtoList = students.stream().map(student ->
-                new StudentDto(student.getId(), student.getName(), student.getEmail())).toList();
+                new StudentDto(student.getId(), student.getName(),student.getStudentClass(),student.getRoll(), student.getEmail())).toList();
         return studentDtoList;
     }
 
@@ -74,7 +74,6 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("Student not found with id: " + id)
         );
-        StudentDto studentDto = modelMapper.map(student, StudentDto.class);
-        return studentDto;
+        return modelMapper.map(student, StudentDto.class);
     }
 }

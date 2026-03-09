@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("students")
 public class StudentController {
 
     private final StudentService studentService;
@@ -19,23 +20,14 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "Spring Boot API is running on Render 🚀";
-    }
-    @GetMapping("/student")
-    public StudentDto getStudentDto(){
-        return new StudentDto(4L,"Admin","admin@gmail.com");
-    }
-
-    @GetMapping("/student/{id}")
-    public StudentDto getStudentById(@PathVariable Long id){
-        return studentService.getStudentById(id);
-    }
-
-    @GetMapping("/students")
+    @GetMapping
     public List<StudentDto> getStudents(){
         return studentService.getAllStudents();
+    }
+
+    @GetMapping("/{id}")
+    public StudentDto getStudentById(@PathVariable Long id){
+        return studentService.getStudentById(id);
     }
 
     @PostMapping

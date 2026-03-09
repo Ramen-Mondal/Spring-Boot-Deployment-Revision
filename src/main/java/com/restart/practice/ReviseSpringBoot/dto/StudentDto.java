@@ -10,5 +10,7 @@ import lombok.NoArgsConstructor;
 public class StudentDto {
     private Long id;
     private String name;
+    private String studentClass;
+    private String roll;
     private String email;
 }
